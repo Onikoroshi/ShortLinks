@@ -26,6 +26,7 @@
 <table>
   <thead>
     <tr>
+	    <th>ID</th>
       <th>Short URL</th>
       <th>Long URL</th>
     </tr>
@@ -34,6 +35,7 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
+	      <td><%= link.id %></td>
         <td><%= link_to get_short_url(link), get_short_url(link) %></td>
         <td><%= link_to link.out_url, link.out_url %></td>
         <td><%= link_to 'Go', get_short_url(link) %></td>
@@ -41,7 +43,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Link', new_link_path %>
