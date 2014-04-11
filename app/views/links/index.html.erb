@@ -28,8 +28,6 @@
     <tr>
       <th>Short URL</th>
       <th>Long URL</th>
-      <th></th>
-	    <th></th>
     </tr>
   </thead>
 
@@ -39,8 +37,6 @@
         <td><%= link_to get_short_url(link), get_short_url(link) %></td>
         <td><%= link_to link.out_url, link.out_url %></td>
         <td><%= link_to 'Go', get_short_url(link) %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

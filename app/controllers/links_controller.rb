@@ -5,7 +5,7 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = Link.all
-    @link = Link.new
+    @link = Link.new unless params[:error]
   end
 
   # GET /links/1
@@ -31,10 +31,11 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
+        format.html { redirect_to action: 'index', notice: 'Link was successfully created.' }
         format.json { render action: 'show', status: :created, location: @link }
       else
-        format.html { render action: 'new' }
+        @links = Link.all
+        format.html { render action: 'index', local: {:error => true} }
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
